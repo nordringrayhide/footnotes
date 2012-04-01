@@ -16,6 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = Footnotes::VERSION
 
   gem.add_dependency 'rails', '~> 3.0'
-  
+
   gem.add_development_dependency 'rspec', '~> 2.9'
+  gem.add_development_dependency 'guard', '~> 1.0.1'
+  gem.add_development_dependency 'guard-rspec', '~> 0.7.0'
 end
