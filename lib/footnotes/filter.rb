@@ -24,7 +24,7 @@ module Footnotes
 
       controller.response.body += <<-HTML
         <div id="footnotes">
-          <div class="footnotes-note"> #{ @notes.map(&:render).join('<br/>') } </div>
+          #{ @notes.map { |note| "<div class='footnotes-note'> #{ note.render } </div>" }.join }
         </div>
       HTML
 
