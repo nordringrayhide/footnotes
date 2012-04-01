@@ -18,7 +18,42 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+config/initializers/footnotes.rb
+
+```ruby
+Footnotes.init
+```
+
+## Stylesheets
+
+app/assets/application.css
+
+```css
+#footnotes {
+  font-family: Verdana, sans;
+  font-size: 11px;
+  border-top: 1px solid #bbb;
+  padding-top: 10px;
+}
+```
+
+## Custom notes
+
+config/initializers/footnotes.rb
+
+```ruby
+module Footnotes
+  class CurrentUserNote < Note
+    def render
+      "#{ title }: #{ controller.current_user.full_name }"
+    end
+  end
+end
+
+Footnotes::Filter += [ CurrentUserNote ]
+```
+
+Enjoi!
 
 ## Contributing
 
@@ -27,3 +62,7 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Copyright
+
+(c) 2012 Roman V. Babenko <romanvbabenko@gmail.com>
