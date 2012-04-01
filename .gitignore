@@ -1,3 +1,7 @@
+.*
+!.gitignore
+!.gitmodules
+!*.example
 *.gem
 *.rbc
 .bundle
@@ -6,6 +10,7 @@
 Gemfile.lock
 InstalledFiles
 _yardoc
+bin
 coverage
 doc/
 lib/bundler/man
