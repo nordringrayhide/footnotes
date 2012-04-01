@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "footnotes"
   gem.require_paths = ["lib"]
   gem.version       = Footnotes::VERSION
+
+  gem.add_dependency 'rails', '~> 3.0'
+  
+  gem.add_development_dependency 'rspec', '~> 2.9'
 end
