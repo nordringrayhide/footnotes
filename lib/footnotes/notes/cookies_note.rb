@@ -1,7 +1,7 @@
 module Footnotes
   class CookiesNote < Note
     def render
-      "#{ title }: #{ controller.request.cookies.inspect }"
+      mount_table_for_hash(controller.request.cookies.to_hash, :summary => "Debug information for #{ title }")
     end
   end
 end

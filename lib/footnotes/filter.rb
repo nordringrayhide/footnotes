@@ -22,11 +22,14 @@ module Footnotes
     def after(controller)
       @notes.each(&:after)
 
-      controller.response.body += <<-HTML
-        <div id="footnotes">
-          #{ @notes.map { |note| "<div class='footnotes-note'> #{ note.render } </div>" }.join }
-        </div>
-      HTML
+      # controller.response.body += <<-HTML
+      #   <div id="footnotes">
+      #     #{ @notes.map { |note| "<div class='footnotes-note'> #{ note.render } </div>" }.join }
+      #   </div>
+      # HTML
+
+      @builder = Builder.new(controller, @notes)
+      @builder.inject!
 
       say "Duration: #{ Time.now - @time } sec"
       say 'Footnotes after filter'

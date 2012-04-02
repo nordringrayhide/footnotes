@@ -1,12 +1,26 @@
 module Footnotes
   class AssignsNote < Note
 
-    def after
-      @assign_names = controller.instance_variables.reject { |v| v.to_s =~ /^@_/ }.map(&:to_sym)
+    def render
+      mount_table(to_table, :summary => "Debug information for #{ title }")
     end
 
-    def render
-      "#{ title }: #{ @assign_names.map { |assign_name| "#{ assign_name.to_s.gsub(/^@/, '') }: #{ escape(controller.instance_variable_get(assign_name).inspect) }" } }"
+    protected
+
+    def to_table
+      @to_table ||= (assigns - ignored_assigns).inject([]) {|rr, var| rr << [var, escape(assigned_value(var))]}.unshift(['Name', 'Value'])
+    end
+
+    def assigns
+      @assigns ||= controller.instance_variables.map { |v| v.to_sym }
+    end
+
+    def ignored_assigns
+      @ignored_assigns ||= controller.instance_variables.select { |v| v.to_s =~ /^@_/ }
+    end
+
+    def assigned_value(key)
+      controller.instance_variable_get(key).inspect
     end
 
   end
