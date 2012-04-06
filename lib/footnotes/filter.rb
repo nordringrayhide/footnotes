@@ -1,7 +1,7 @@
 module Footnotes
 
   class Filter
-    @@note_classes = [AssignsNote, DurationNote, SessionNote, ParamsNote, CookiesNote]
+    @@note_classes = [AssignsNote, DurationNote, SessionNote, ParamsNote, CookiesNote, NotificationsNote]
     include Debugger
 
     def initialize
