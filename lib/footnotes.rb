@@ -13,7 +13,8 @@ module Footnotes
   autoload :SessionNote,        'footnotes/notes/session_note'
   autoload :ParamsNote,         'footnotes/notes/params_note'
 
-  autoload :NotificationsNote,   'footnotes/notes/notifications_note'
+  autoload :NotificationsNote,  'footnotes/notes/notifications_note'
+  autoload :QueriesNote,        'footnotes/notes/queries_note'
 
   def init
     ActionController::Base.send :around_filter, Footnotes::Filter.new
