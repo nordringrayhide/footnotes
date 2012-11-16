@@ -29,7 +29,12 @@ module Footnotes
       # HTML
 
       @builder = Builder.new(controller, @notes)
-      @builder.inject!
+      say "#{ controller.params[:footnotes] }"
+      if controller.params[:footnotes].to_s.downcase != 'false'
+        @builder.inject!
+      else
+        say 'footnotes skipped'
+      end
 
       say "Duration: #{ Time.now - @time } sec"
       say 'Footnotes after filter'
