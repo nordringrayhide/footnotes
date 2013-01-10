@@ -30,7 +30,7 @@ module Footnotes
 
       @builder = Builder.new(controller, @notes)
       say "#{ controller.params[:footnotes] }"
-      if controller.params[:footnotes].to_s.downcase != 'false'
+      if !controller.request.xhr? && controller.params[:footnotes].to_s.downcase != 'false'
         @builder.inject!
       else
         say 'footnotes skipped'
